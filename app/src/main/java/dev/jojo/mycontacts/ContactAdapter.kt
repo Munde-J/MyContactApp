@@ -1,10 +1,12 @@
 package dev.jojo.mycontacts
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.NetworkPolicy
 import com.squareup.picasso.Picasso
@@ -33,6 +35,17 @@ RecyclerView.Adapter<ContactViewHolder>(){
             .centerCrop()
             .networkPolicy(NetworkPolicy.OFFLINE)
             .into(holder.binding.ivImage)
+
+        val context = holder.itemView.context
+        holder.binding.ivImage.setOnClickListener{
+            Toast.makeText(context,"You have clicked on ${currentContact.name}'s the image", Toast.LENGTH_SHORT).show()
+        }
+        holder.binding.cvContact.setOnClickListener{
+            val intent = Intent(context, ViewContactActivity::class.java)
+            intent.putExtra("NAME", currentContact.name)
+            intent.putExtra("email",currentContact.email)
+            context.startActivity(intent)
+        }
 
     }
 
