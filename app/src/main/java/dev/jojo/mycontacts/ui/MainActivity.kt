@@ -1,8 +1,9 @@
-package dev.jojo.mycontacts
+package dev.jojo.mycontacts.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
+import dev.jojo.mycontacts.model.Contact
 import dev.jojo.mycontacts.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {

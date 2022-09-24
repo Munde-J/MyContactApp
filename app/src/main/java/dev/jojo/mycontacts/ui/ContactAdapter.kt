@@ -1,16 +1,13 @@
-package dev.jojo.mycontacts
+package dev.jojo.mycontacts.ui
 
 import android.content.Intent
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
-import com.squareup.picasso.NetworkPolicy
 import com.squareup.picasso.Picasso
-import dev.jojo.mycontacts.databinding.ActivityMainBinding
+import dev.jojo.mycontacts.model.Contact
+import dev.jojo.mycontacts.R
 import dev.jojo.mycontacts.databinding.ContactListItemsBinding
 
 class ContactAdapter (var contactList: List<Contact>):
@@ -33,7 +30,7 @@ RecyclerView.Adapter<ContactViewHolder>(){
             .error(R.drawable.ic_baseline_error_outline_24)
             .resize(300,300)
             .centerCrop()
-            .networkPolicy(NetworkPolicy.OFFLINE)
+//            .networkPolicy(NetworkPolicy.OFFLINE)
             .into(holder.binding.ivImage)
 
         val context = holder.itemView.context
@@ -44,6 +41,11 @@ RecyclerView.Adapter<ContactViewHolder>(){
             val intent = Intent(context, ViewContactActivity::class.java)
             intent.putExtra("NAME", currentContact.name)
             intent.putExtra("email",currentContact.email)
+            intent.putExtra("ADDRESS",currentContact.address)
+            intent.putExtra("phone",currentContact.email)
+            intent.putExtra("IMAGE",currentContact.image)
+
+
             context.startActivity(intent)
         }
 

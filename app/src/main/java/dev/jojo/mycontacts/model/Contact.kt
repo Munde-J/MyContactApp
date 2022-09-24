@@ -1,4 +1,4 @@
-package dev.jojo.mycontacts
+package dev.jojo.mycontacts.model
 
 data class Contact(
     var name: String,
